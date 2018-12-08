@@ -1,7 +1,8 @@
 <?php
 
 namespace GrimBees\DocRouter\Router;
-use Illuminate\Routing\Route;
+
+use Illuminate\Support\Facades\Route;
 
 /**
  * Created by PhpStorm.
@@ -15,18 +16,14 @@ class Collector {
     protected $controllers = [];
 
     public function __construct() {
-        $controllers = require_once_base_path('vendor/composer/autoload_classmap.php');
-        $controllers = array_filter($controllers, function ($controller) {
-            return strpos($controller, 'App\Http\Controllers') !== false;
+        $controllers = require_once(base_path('vendor/composer/autoload_classmap.php'));
+        $this->controllers = array_filter($controllers, function ($controller) {
+            return strpos($controller, 'Controller.php') !== false;
         });
-        $this->controllers = array_map(function ($controller) {
-
-            return str_replace('App\Http\Controllers\\', '', $controller);
-        }, $controllers);
     }
 
     public function process() {
-        foreach ($this->controllers as $className) {
+        foreach ($this->controllers as $className => $filePath) {
             $prefix = '';
             $middleware = '';
             $controller = new \ReflectionClass($className);
