@@ -1,0 +1,36 @@
+{
+  "name": "grimbees/docrouter",
+  "type": "library",
+  "description": "Document Router is a Laravel library that allow you to define routing on controller documentation",
+  "keywords": ["router", "documentation", "annotation"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Saputra",
+      "email": "dvd.sap@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^5.3.3 || ^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.0 || ^5.0",
+    "squizlabs/php_codesniffer": "^1.5",
+    "ext-intl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "GrimBees\\DocRouter\\": "src/DocRouter/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "GrimBees\\Test\\": "test/DocRouter/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.0.1-dev"
+    }
+  }
+}
